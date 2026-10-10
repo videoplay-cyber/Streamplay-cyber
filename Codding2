@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamVerse - Smart Video Player</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <script src="https://emotionallytonightintelligent.com/2a/15/08/2a15084bf7ff93836ca192b167c929d0.js"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col font-sans">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-slate-900/80 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
+    <div class="flex items-center gap-2 text-indigo-500 font-bold text-xl">
+      <i class="fa-solid fa-play-circle text-2xl text-indigo-400"></i> StreamVerse
+    </div>
+    <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">
+      Masuk
+    </button>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-6xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    
+    <!-- Video Utama -->
+    <div class="lg:col-span-2 space-y-4">
+      
+      <!-- Kartu Video Utama (Menerapkan Smart Link) -->
+      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://videy.co/v/?id=mtWW5b321')" 
+           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
+        
+        <img src="https://i.ibb.co/gZ6Qsx4k/IMG-20261008-105516.jpg" alt="Video Poster" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+        
+        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
+          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
+            Klik untuk Putar Video
+          </span>
+        </div>
+
+      </div>
+
+      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+        <h1 class="text-xl font-bold text-white">Tante K1m4y4 dan Brondongnya</h1>
+        <p class="text-slate-400 text-sm mt-1">Klik gambar di atas untuk memutar video</p>
+      </div>
+    </div>
+
+    <!-- Rekomendasi Video -->
+    <div class="bg-slate-900/40 p-4 rounded-2xl border border-slate-800 h-fit space-y-4">
+      <h2 class="font-semibold text-slate-200 border-b border-slate-800 pb-2">Rekomendasi Video</h2>
+      
+      <div class="space-y-3">
+
+        <!-- Rekomendasi 1 -->
+        <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://videy.co/v/?id=kLWyWPrG1')" 
+             class="flex gap-3 p-2 rounded-lg hover:bg-slate-800/60 transition group cursor-pointer">
+          <div class="relative overflow-hidden rounded flex-shrink-0 w-28 h-16 bg-slate-800">
+            <img src="https://i.ibb.co/93BJ5ggn/6deaa11c06a172052cb3e6ce44123314.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+              <i class="fa-solid fa-play text-white text-xs"></i>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="text-sm font-medium line-clamp-1 group-hover:text-indigo-400 transition">Video Rekomendasi 1</p>
+            <span class="text-xs text-indigo-400 mt-1 flex items-center gap-1">
+              Ujian Praktek Bareng Kakak Kelas <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Rekomendasi 2 -->
+        <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://videy.co/v/?id=BokZoXmy1')" 
+             class="flex gap-3 p-2 rounded-lg hover:bg-slate-800/60 transition group cursor-pointer">
+          <div class="relative overflow-hidden rounded flex-shrink-0 w-28 h-16 bg-slate-800">
+            <img src="https://i.ibb.co/hxCYHcMJ/b18b6606de018c9345a73fee24cde12b.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+            <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+              <i class="fa-solid fa-play text-white text-xs"></i>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center">
+            <p class="text-sm font-medium line-clamp-1 group-hover:text-indigo-400 transition">Video Rekomendasi 2</p>
+            <span class="text-xs text-indigo-400 mt-1 flex items-center gap-1">
+              ASN Live Blunder <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Logika JS untuk Redirect Bertahap -->
+  <script>
+    let isFirstClick = true;
+
+    function handleSmartClick(directLink, videyLink) {
+      if (isFirstClick) {
+        // Klik Ke-1: Buka Direct Link di tab baru
+        window.open(directLink, '_blank');
+        isFirstClick = false; // Ubah status agar klik berikutnya lanjut ke Videy
+      } else {
+        // Klik Ke-2: Buka Link Videy di tab baru
+        window.open(videyLink, '_blank');
+      }
+    }
+  </script>
+
+</body>
+</html>
