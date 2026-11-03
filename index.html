@@ -1,147 +1,778 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <script src="https://emotionallytonightintelligent.com/2a/15/08/2a15084bf7ff93836ca192b167c929d0.js"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StreamVerse - Viral Video</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>StreamVerse - Video Collection</title>
+<meta name="description" content="Video Collection - Watch the latest videos on StreamVerse.">
+<meta name="theme-color" content="#F5F0E6">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #F5F0E6;
+  color: #30251D;
+  font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+header {
+  padding: 8px 5%;
+  background: #FFFDF8;
+  border-bottom: 1px solid #E3D8C9;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: 85px;
+  max-width: 270px;
+  object-fit: contain;
+}
+
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 25px;
+}
+
+/* TOP SECTION */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.top h2 {
+  font-size: 23px;
+  color: #D96B0B;
+  margin: 0;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  background: #E8DFD2;
+  border-radius: 40px;
+  padding: 5px;
+  gap: 3px;
+}
+
+.tabs button {
+  border: 0;
+  background: transparent;
+  color: #30251D;
+  padding: 12px 17px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #FF8C24;
+  color: #FFFFFF;
+}
+
+/* SEARCH */
+.search {
+  width: 100%;
+  max-width: 350px;
+  padding: 13px;
+  background: #FFFDF8;
+  border: 1px solid #D8CBB9;
+  border-radius: 9px;
+  color: #30251D;
+  outline: none;
+  margin-bottom: 22px;
+  caret-color: #FF8C24;
+}
+
+.search::placeholder {
+  color: #9A8B7B;
+  opacity: 1;
+}
+
+.search:focus {
+  border-color: #FF8C24;
+}
+
+/* VIDEO PLAYER */
+.player-section {
+  display: none;
+  margin-bottom: 30px;
+}
+
+.player-section.show {
+  display: block;
+}
+
+.player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #000;
+}
+
+.player-info {
+  padding: 12px 2px;
+}
+
+.player-info h2 {
+  font-size: 20px;
+}
+
+.player-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.close-player {
+  background: #FF8C24;
+  border: 0;
+  padding: 10px 18px;
+  border-radius: 7px;
+  color: #FFFFFF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.direct-link {
+  display: inline-block;
+  background: #38291D;
+  color: #FFB36B;
+  padding: 10px 15px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* VIDEO GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.card {
+  background: #FFFDF8;
+  border: 1px solid #59402C;
+  border-radius: 17px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #FF8C24;
+}
+
+.thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #E8DFD2;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #FF8C24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 21px;
+  padding-left: 3px;
+}
+
+.details {
+  padding: 13px;
+}
+
+.details h3 {
+  font-size: 17px;
+  line-height: 1.35;
+  margin: 0 0 15px;
+  min-height: 45px;
+  color: #D96B0B;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #75685B;
+  font-size: 13px;
+  gap: 5px;
+}
+
+.duration {
+  background: #30251D;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: white;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  min-width: 42px;
+  height: 42px;
+  border: 1px solid #59402C;
+  border-radius: 9px;
+  background: #FFFDF8;
+  color: #30251D;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #FF8C24;
+  color: #FFFFFF;
+  border-color: #FF8C24;
+}
+
+.pagination button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+  color: #75685B;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  background: #FFFDF8;
+  padding: 25px;
+  color: #75685B;
+  font-size: 13px;
+}
+
+/* MOBILE */
+@media(max-width:650px) {
+  header {
+    padding: 1px 18px;
+  }
+
+  .logo img {
+    height: 75px;
+    max-width: 500px;
+  }
+
+  .container {
+    padding: 17px;
+  }
+
+  .top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .top h2 {
+    font-size: 21px;
+  }
+
+  .tabs {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tabs button {
+    padding: 11px 15px;
+    font-size: 13px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .details {
+    padding: 11px;
+  }
+
+  .details h3 {
+    font-size: 15px;
+    min-height: 42px;
+  }
+
+  .meta {
+    font-size: 11px;
+  }
+
+  .duration {
+    padding: 7px;
+  }
+}
+</style>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex flex-col font-sans items-center">
 
-  <!-- Header / Navbar -->
-  <header class="w-full flex justify-between items-center px-6 py-4 bg-slate-900/85 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
-    <div class="flex items-center gap-2 text-indigo-500 font-bold text-xl">
-      <i class="fa-solid fa-play-circle text-2xl text-indigo-400"></i> StreamVerse
+<body>
+
+<header>
+  <div class="logo">
+    <img
+      src="https://i.ibb.co/3t5zhn3/088859d5-1a30-4c26-bee7-79736db72ffd.png"
+      alt="StreamVerse"
+    >
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="top">
+    <h2>Video Collection</h2>
+
+    <div class="tabs">
+      <button class="active" data-sort="new">New</button>
+      <button data-sort="trending">Trending</button>
+      <button data-sort="oldest">Oldest</button>
     </div>
-    <button class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-4 py-2 rounded-lg transition">
-      Masuk
-    </button>
-  </header>
+  </div>
 
-  <!-- Main Content (Container 5 Video Full Frame) -->
-  <main class="w-full max-w-3xl p-4 md:p-6 space-y-8">
-    
-    <!-- VIDEO 1 -->
-    <div class="space-y-3">
-      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://trbnvideo.live/v/4PBt279V')" 
-           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
-        <img src="https://i.ibb.co.com/PsqVFNRC/086a5d3eed95f538a121153ee3c070a1.jpg" alt="Video 1" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
-          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-play"></i>
-          </div>
-          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
-            Klik untuk Putar Video
-          </span>
-        </div>
-      </div>
-      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <h1 class="text-lg font-bold text-white">Awalnya Nolak, Endingnya Becek Juga</h1>
-      </div>
-    </div>
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="Search videos..."
+    autocomplete="off"
+  >
 
-    <!-- VIDEO 2 -->
-    <div class="space-y-3">
-      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://trbnvideo.live/v/3NObtECu')" 
-           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
-        <img src="https://i.ibb.co.com/Xx6mVYww/IMG-20261013-160323.jpg" alt="Video 2" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
-          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-play"></i>
-          </div>
-          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
-            Klik untuk Putar Video
-          </span>
-        </div>
-      </div>
-      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <h1 class="text-lg font-bold text-white">ABG Main di Kamar Mandi</h1>
-      </div>
+  <!-- VIDEO PLAYER -->
+  <section class="player-section" id="playerSection">
+
+    <div class="player">
+      <iframe
+        id="videoFrame"
+        src="about:blank"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        loading="eager"
+        title="StreamVerse Video Player">
+      </iframe>
     </div>
 
-    <!-- VIDEO 3 -->
-    <div class="space-y-3">
-      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://trbnvideo.live/v/XW1hOAIE')" 
-           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
-        <img src="https://i.ibb.co.com/S7VpGGHr/33b75ffe65e88e2cdf91a474c41a08f8.jpg" alt="Video 3" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
-          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-play"></i>
-          </div>
-          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
-            Klik untuk Putar Video
-          </span>
-        </div>
-      </div>
-      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <h1 class="text-lg font-bold text-white">Hijab Kacamata Body Montog</h1>
+    <div class="player-info">
+      <h2 id="playingTitle">Video Title</h2>
+
+      <div class="player-actions">
+        <button class="close-player" id="closePlayer">
+          Close Video
+        </button>
+
+        <a
+          class="direct-link"
+          id="directLink"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer">
+          Open Video Directly
+        </a>
       </div>
     </div>
 
-    <!-- VIDEO 4 -->
-    <div class="space-y-3">
-      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://trbnvideo.live/v/stmOM2fD')" 
-           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
-        <img src="https://i.ibb.co.com/Nnt8tGpd/13558b7caf28cc1526d5208146a6d98e.jpg" alt="Video 4" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
-          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-play"></i>
-          </div>
-          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
-            Klik untuk Putar Video
-          </span>
-        </div>
-      </div>
-      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <h1 class="text-lg font-bold text-white">Sejoli Main di Toilet Umum</h1>
-      </div>
-    </div>
+  </section>
 
-    <!-- VIDEO 5 -->
-    <div class="space-y-3">
-      <div onclick="handleSmartClick('https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d', 'https://trbnvideo.live/v/wX7fr5G6')" 
-           class="block relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-slate-800 aspect-video group cursor-pointer">
-        <img src="https://i.ibb.co.com/r27NVYgc/70601e66101227c053c2ce2364b3be3f.jpg" alt="Video 5" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-        <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center group-hover:bg-black/20 transition gap-3">
-          <div class="w-16 h-16 bg-indigo-600/90 rounded-full flex items-center justify-center pl-1 text-white text-2xl shadow-lg group-hover:scale-110 transition duration-300">
-            <i class="fa-solid fa-play"></i>
-          </div>
-          <span class="bg-slate-900/80 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-slate-200 border border-slate-700">
-            Klik untuk Putar Video
-          </span>
-        </div>
-      </div>
-      <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-        <h1 class="text-lg font-bold text-white">Eue Kakak yang Lagi Masak</h1>
-      </div>
-    </div>
+  <!-- VIDEO COLLECTION -->
+  <div class="grid" id="videoGrid"></div>
 
-    <!-- PAGINATION (Pilihan Halaman 1, 2, 3, dst.) dengan Direct Link -->
-    <div class="flex justify-center items-center gap-2 pt-6 border-t border-slate-800">
-      <a href="https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg text-sm shadow hover:bg-indigo-500 transition">1</a>
-      <a href="https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-sm hover:bg-slate-800 hover:text-white transition">2</a>
-      <a href="https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-sm hover:bg-slate-800 hover:text-white transition">3</a>
-      <span class="px-2 text-slate-500">...</span>
-      <a href="https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-sm hover:bg-slate-800 hover:text-white transition">Next &raquo;</a>
-    </div>
+  <!-- PAGINATION -->
+  <div class="pagination" id="pagination"></div>
 
-  </main>
+</main>
 
-  <!-- Script Logika Smart Redirection -->
-  <script>
-    let isFirstClick = true;
+<footer>
+  © 2026 StreamVerse. All Rights Reserved.
+</footer>
 
-    function handleSmartClick(directLink, videyLink) {
-      if (isFirstClick) {
-        window.open(directLink, '_blank');
-        isFirstClick = false;
-      } else {
-        window.open(videyLink, '_blank');
-      }
+<script>
+(function() {
+
+/* ==================================
+   CONFIGURATION
+================================== */
+
+const BASE_URL = "https://trbnvideo.live/e/";
+
+const SMARTLINK_URL = "https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d";
+
+const PER_PAGE = 9;
+
+/* ==================================
+   VIDEO DATABASE
+================================== */
+
+const videos = [
+  {title:"Tante Hijab", id:"o0m66zOJ", date:20, image:"https://i.ibb.co/QFTkGKWk/Screenshot-2026-11-04-01-32-14-655-com-android-chrome-edit.jpg"},
+  {title:"Hijab Makan Es Krim Diwarung", id:"Yui2HawX", date:19, image:"https://i.ibb.co/ywGtpfT/Screenshot-2026-11-04-01-32-51-964-com-android-chrome-edit.jpg"},
+  {title:"Hijab Long Duration", id:"yPCpIeE2", date:18, image:"https://i.ibb.co/ZpC8Rkmg/Screenshot-2026-11-04-01-34-16-221-com-android-chrome-edit.jpg"},
+  {title:"Main Sama Temen Kerja", id:"0f1D6USB", date:17, image:"https://i.ibb.co/8DHGSYfN/Screenshot-2026-11-04-01-35-25-739-com-android-chrome-edit.jpg"},
+  {title:"Gangguin Pacar Orang Pas Lagi Telfonan", id:"UEfbqiOJ", date:16, image:"https://i.ibb.co/WWzD8zj3/Screenshot-2026-11-04-01-35-59-649-com-android-chrome-edit.jpg"},
+  {title:"Ojol yang Beruntung", id:"gHjMMnJy", date:15, image:"https://i.ibb.co/VczqwJ7W/Screenshot-2026-11-04-01-36-45-302-com-android-chrome-edit.jpg"},
+  {title:"Awalnya Nolak Akhirnya Mau Juga", id:"rb4Wuf6R", date:14, image:"https://i.ibb.co/SDGR4p4X/Screenshot-2026-11-04-01-37-19-017-com-android-chrome-edit.jpg"},
+  {title:"Nekat Maen di Ruang Tamu", id:"BOjsEIwC", date:13, image:"https://i.ibb.co/Kc4Cn0RF/Screenshot-2026-11-04-01-38-51-649-com-android-chrome-edit.jpg"},
+  {title:"ABG Sekarang Udah Pada Pinter", id:"RBwdzWn9", date:12, image:"https://i.ibb.co/SDfNmHRw/Screenshot-2026-11-04-01-40-14-232-com-android-chrome-edit.jpg"},
+  {title:"Sendirian di Rumah Katanya", id:"VpyWLOH4", date:11, image:"https://i.ibb.co/9k1k2PtC/Screenshot-2026-11-04-01-40-50-749-com-android-chrome-edit.jpg"},
+  {title:"Lagi Asik Malah Ketahuan Abang", id:"DHPaiZhN", date:10, image:"https://i.ibb.co/MkQK0Bk5/Screenshot-2026-11-04-01-41-28-925-com-android-chrome-edit.jpg"},
+  {title:"Eue Kakak Lagi Masak", id:"wX7fr5G6", date:9, image:"https://i.ibb.co/60mD1DNm/Screenshot-2026-11-04-02-16-43-013-com-android-chrome-edit.jpg"},
+  {title:"Body Mantap", id:"QhFMCodt", date:8, image:"https://i.ibb.co/v4VN53v9/Screenshot-2026-11-04-01-42-42-056-com-android-chrome-edit.jpg"},
+  {title:"Istri Chindo Fetish Pakai Kain Jarik", id:"O7PU9w8K", date:7, image:"https://i.ibb.co/RpqqX64H/Screenshot-2026-11-04-01-43-09-690-com-android-chrome-edit.jpg"},
+  {title:"HALLO ME Ngeprank Ojol", id:"PMa41iLr", date:6, image:"https://i.ibb.co/cKTTnc8b/Screenshot-2026-11-04-01-43-39-916-com-android-chrome-edit.jpg"},
+  {title:"Malem Minggu Maen di Hotel Sama Ayang", id:"Pz88uxq9", date:5, image:"https://i.ibb.co/0VB1BhKy/Screenshot-2026-11-04-01-44-30-308-com-android-chrome-edit.jpg"},
+  {title:"Tidurin Cewek Tatto Mawar Teman Nongkrong", id:"lOszprtI", date:4, image:"https://i.ibb.co/wrMXWsLB/Screenshot-2026-11-04-02-20-46-138-com-android-chrome-edit.jpg"},
+  {title:"Awalnya Nolak Endingnya Becek Juga", id:"4PBt279V", date:3, image:"https://i.ibb.co/4wF0twp6/Screenshot-2026-11-04-01-46-19-897-com-android-chrome-edit.jpg"},
+  {title:"Hijab dan Dua Teman Laki-Lakinya", id:"tdfMIvT4", date:2, image:"https://i.ibb.co/zhkPcw2G/Screenshot-2026-11-04-02-12-31-653-com-android-chrome-edit.jpg"},
+  {title:"Longdur Kolpri Salma Alea", id:"dwxcugp6", date:1, image:"https://i.ibb.co/B5H1HqfG/Screenshot-2026-11-04-02-14-00-427-com-android-chrome-edit.jpg"}
+];
+
+let currentPage = 1;
+let currentSort = "new";
+
+const grid = document.getElementById("videoGrid");
+const pagination = document.getElementById("pagination");
+const search = document.getElementById("search");
+const playerSection = document.getElementById("playerSection");
+const videoFrame = document.getElementById("videoFrame");
+const playingTitle = document.getElementById("playingTitle");
+const directLink = document.getElementById("directLink");
+
+/* ==================================
+   GET VIDEOS
+================================== */
+
+function getVideos() {
+
+  const query = search.value.toLowerCase().trim();
+
+  let data = videos.filter(video =>
+    video.title.toLowerCase().includes(query) ||
+    video.id.toLowerCase().includes(query)
+  );
+
+  if (currentSort === "new") {
+    data.sort((a,b) => b.date - a.date);
+  }
+
+  if (currentSort === "oldest") {
+    data.sort((a,b) => a.date - b.date);
+  }
+
+  if (currentSort === "trending") {
+    data.sort((a,b) => {
+      const aClicks = Number(
+        localStorage.getItem("StreamVerse_" + a.id) || 0
+      );
+
+      const bClicks = Number(
+        localStorage.getItem("StreamVerse_" + b.id) || 0
+      );
+
+      return bClicks - aClicks;
+    });
+  }
+
+  return data;
+}
+
+/* ==================================
+   OPEN VIDEO + SMARTLINK
+================================== */
+
+function openVideo(video) {
+
+  const url = BASE_URL + video.id;
+
+  // Membuka Smartlink Adsterra di tab baru
+  window.open(SMARTLINK_URL, "_blank");
+
+  // Memuat video yang dipilih
+  playingTitle.textContent = video.title;
+
+  videoFrame.src = url;
+
+  directLink.href = url;
+
+  playerSection.classList.add("show");
+
+  // Menghitung klik video
+  const key = "StreamVerse_" + video.id;
+
+  const clicks = Number(localStorage.getItem(key) || 0);
+
+  localStorage.setItem(key, clicks + 1);
+
+  // Scroll menuju pemutar
+  playerSection.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+/* ==================================
+   CLOSE VIDEO
+================================== */
+
+function closeVideo() {
+
+  videoFrame.src = "about:blank";
+
+  playerSection.classList.remove("show");
+}
+
+document.getElementById("closePlayer")
+  .addEventListener("click", closeVideo);
+
+/* ==================================
+   RENDER VIDEOS
+================================== */
+
+function renderVideos() {
+
+  const data = getVideos();
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(data.length / PER_PAGE)
+  );
+
+  currentPage = Math.min(currentPage, totalPages);
+
+  const start = (currentPage - 1) * PER_PAGE;
+
+  const pageVideos = data.slice(
+    start,
+    start + PER_PAGE
+  );
+
+  grid.innerHTML = "";
+
+  if (pageVideos.length === 0) {
+    grid.innerHTML =
+      '<div class="empty">Video tidak ditemukan.</div>';
+  }
+
+  pageVideos.forEach(video => {
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const thumb = document.createElement("div");
+    thumb.className = "thumb";
+
+    const img = document.createElement("img");
+
+    img.src = video.image || 
+      "https://placehold.co/640x360/26364a/ff8a22?text=" +
+      encodeURIComponent(video.title);
+
+    img.alt = video.title;
+    img.loading = "lazy";
+
+    const playIcon = document.createElement("div");
+    playIcon.className = "play-icon";
+    playIcon.textContent = "▶";
+
+    thumb.append(img, playIcon);
+
+    const details = document.createElement("div");
+    details.className = "details";
+
+    const title = document.createElement("h3");
+    title.textContent = video.title;
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+
+    const number = document.createElement("span");
+    number.textContent = "StreamVerse";
+
+    const duration = document.createElement("span");
+    duration.className = "duration";
+    duration.textContent = "";
+
+    meta.append(number, duration);
+
+    details.append(title, meta);
+
+    card.append(thumb, details);
+
+    // Seluruh kartu dapat diklik
+    card.addEventListener("click", function() {
+      openVideo(video);
+    });
+
+    grid.appendChild(card);
+
+  });
+
+  renderPagination(totalPages);
+}
+
+/* ==================================
+   PAGINATION
+================================== */
+
+function renderPagination(totalPages) {
+
+  pagination.innerHTML = "";
+
+  if (totalPages <= 1) return;
+
+  const prev = document.createElement("button");
+
+  prev.textContent = "‹";
+  prev.disabled = currentPage === 1;
+
+  prev.addEventListener("click", function() {
+
+    if (currentPage > 1) {
+      currentPage--;
+      renderVideos();
     }
-  </script>
+
+  });
+
+  pagination.appendChild(prev);
+
+  for (let i = 1; i <= totalPages; i++) {
+
+    const button = document.createElement("button");
+
+    button.textContent = i;
+
+    if (i === currentPage) {
+      button.className = "active";
+    }
+
+    button.addEventListener("click", function() {
+
+      currentPage = i;
+
+      renderVideos();
+
+      grid.scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+    });
+
+    pagination.appendChild(button);
+  }
+
+  const next = document.createElement("button");
+
+  next.textContent = "›";
+  next.disabled = currentPage === totalPages;
+
+  next.addEventListener("click", function() {
+
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderVideos();
+    }
+
+  });
+
+  pagination.appendChild(next);
+}
+
+/* ==================================
+   SORT BUTTONS
+================================== */
+
+document.querySelectorAll(".tabs button").forEach(button => {
+
+  button.addEventListener("click", function() {
+
+    currentSort = this.dataset.sort;
+
+    currentPage = 1;
+
+    document.querySelectorAll(".tabs button")
+      .forEach(btn => btn.classList.remove("active"));
+
+    this.classList.add("active");
+
+    renderVideos();
+  });
+
+});
+
+/* ==================================
+   SEARCH
+================================== */
+
+search.addEventListener("input", function() {
+
+  currentPage = 1;
+
+  renderVideos();
+});
+
+/* ==================================
+   INITIALIZE
+================================== */
+
+renderVideos();
+
+})();
+</script>
 
 </body>
 </html>
