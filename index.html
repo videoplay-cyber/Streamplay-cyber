@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,6 +10,10 @@
 <meta name="theme-color" content="#F5F0E6">
 
 <style>
+/* ==================================
+   1. PENGATURAN DASAR
+================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -20,7 +25,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* ==================================
+   2. HEADER DAN LOGO
+================================== */
+
 header {
   padding: 8px 5%;
   background: #FFFDF8;
@@ -40,14 +48,20 @@ header {
   object-fit: contain;
 }
 
-/* MAIN */
+/* ==================================
+   3. KONTEN UTAMA
+================================== */
+
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 25px;
 }
 
-/* TOP SECTION */
+/* ==================================
+   4. JUDUL DAN TAB
+================================== */
+
 .top {
   display: flex;
   justify-content: space-between;
@@ -62,7 +76,6 @@ header {
   margin: 0;
 }
 
-/* TABS */
 .tabs {
   display: flex;
   background: #E8DFD2;
@@ -86,7 +99,10 @@ header {
   color: #FFFFFF;
 }
 
-/* SEARCH */
+/* ==================================
+   5. PENCARIAN
+================================== */
+
 .search {
   width: 100%;
   max-width: 350px;
@@ -109,7 +125,10 @@ header {
   border-color: #FF8C24;
 }
 
-/* VIDEO PLAYER */
+/* ==================================
+   6. VIDEO PLAYER
+================================== */
+
 .player-section {
   display: none;
   margin-bottom: 30px;
@@ -171,7 +190,10 @@ header {
   font-weight: bold;
 }
 
-/* VIDEO GRID */
+/* ==================================
+   7. GRID VIDEO
+================================== */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -252,7 +274,10 @@ header {
   color: white;
 }
 
-/* PAGINATION */
+/* ==================================
+   8. PAGINATION
+================================== */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -292,7 +317,10 @@ header {
   color: #75685B;
 }
 
-/* FOOTER */
+/* ==================================
+   9. FOOTER
+================================== */
+
 footer {
   margin-top: 40px;
   text-align: center;
@@ -302,7 +330,111 @@ footer {
   font-size: 13px;
 }
 
-/* MOBILE */
+/* ==================================
+   10. POPUP SMARTLINK
+================================== */
+
+.ad-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, .72);
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.ad-overlay.show {
+  display: flex;
+}
+
+.ad-box {
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  background: #FFFDF8;
+  border: 2px solid #FF8C24;
+  border-radius: 16px;
+  padding: 30px 22px 24px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .3);
+  animation: popupIn .25s ease;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ad-close {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 50%;
+  background: #F0E6DA;
+  color: #30251D;
+  font-size: 23px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ad-close:hover {
+  background: #FF8C24;
+  color: #FFFFFF;
+}
+
+.ad-brand {
+  display: block;
+  color: #D96B0B;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.ad-box h3 {
+  color: #30251D;
+  font-size: 21px;
+  margin: 0 0 12px;
+}
+
+.ad-box p {
+  color: #75685B;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.ad-button {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border-radius: 9px;
+  background: #FF8C24;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ad-button:hover {
+  background: #D96B0B;
+}
+
+/* ==================================
+   11. TAMPILAN MOBILE
+================================== */
+
 @media(max-width:650px) {
   header {
     padding: 1px 18px;
@@ -364,6 +496,10 @@ footer {
 
 <body>
 
+<!-- ==================================
+     HEADER
+================================== -->
+
 <header>
   <div class="logo">
     <img
@@ -375,6 +511,8 @@ footer {
 
 <main class="container">
 
+  <!-- JUDUL DAN TAB -->
+
   <div class="top">
     <h2>Video Collection</h2>
 
@@ -385,6 +523,8 @@ footer {
     </div>
   </div>
 
+  <!-- PENCARIAN -->
+
   <input
     class="search"
     id="search"
@@ -394,6 +534,7 @@ footer {
   >
 
   <!-- VIDEO PLAYER -->
+
   <section class="player-section" id="playerSection">
 
     <div class="player">
@@ -428,33 +569,76 @@ footer {
 
   </section>
 
-  <!-- VIDEO COLLECTION -->
+  <!-- DAFTAR VIDEO -->
+
   <div class="grid" id="videoGrid"></div>
 
   <!-- PAGINATION -->
+
   <div class="pagination" id="pagination"></div>
 
 </main>
+
+<!-- FOOTER -->
 
 <footer>
   © 2026 StreamVerse. All Rights Reserved.
 </footer>
 
+<!-- ==================================
+     POPUP SMARTLINK
+================================== -->
+
+<div class="ad-overlay" id="adOverlay">
+
+  <div class="ad-box">
+
+    <button
+      class="ad-close"
+      id="adClose"
+      aria-label="Close popup"
+    >×</button>
+
+    <div class="ad-brand">📽 STREAMVERSE</div>
+
+    <h3>Ada Penawaran Menarik!</h3>
+
+    <p>
+      Temukan berbagai penawaran menarik.
+      Klik tombol di bawah untuk melihat selengkapnya.
+    </p>
+
+    <a
+      class="ad-button"
+      id="adButton"
+      href="https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d"
+      target="_blank"
+      rel="noopener noreferrer">
+      Lihat Penawaran
+    </a>
+
+  </div>
+
+</div>
+
 <script>
 (function() {
 
 /* ==================================
-   CONFIGURATION
+   1. CONFIGURATION
 ================================== */
 
 const BASE_URL = "https://trbnvideo.live/e/";
 
-const SMARTLINK_URL = "https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d";
+const SMARTLINK_URL =
+"https://emotionallytonightintelligent.com/bwuq2bmay8?key=64b01feeb25c6433602effa9db70338d";
 
 const PER_PAGE = 9;
+const AD_DELAY = 3000;
+const MAX_AD_SHOW = 3;
 
 /* ==================================
-   VIDEO DATABASE
+   2. VIDEO DATABASE
 ================================== */
 
 const videos = [
@@ -480,23 +664,33 @@ const videos = [
   {title:"Longdur Kolpri Salma Alea", id:"dwxcugp6", date:1, image:"https://i.ibb.co/B5H1HqfG/Screenshot-2026-11-04-02-14-00-427-com-android-chrome-edit.jpg"}
 ];
 
+/* ==================================
+   3. ELEMENT DAN STATUS
+================================== */
+
 let currentPage = 1;
 let currentSort = "new";
+let adTimer = null;
+let adShownCount = 0;
 
 const grid = document.getElementById("videoGrid");
 const pagination = document.getElementById("pagination");
 const search = document.getElementById("search");
+
 const playerSection = document.getElementById("playerSection");
 const videoFrame = document.getElementById("videoFrame");
 const playingTitle = document.getElementById("playingTitle");
 const directLink = document.getElementById("directLink");
 
+const adOverlay = document.getElementById("adOverlay");
+const adClose = document.getElementById("adClose");
+const adButton = document.getElementById("adButton");
+
 /* ==================================
-   GET VIDEOS
+   4. MENGAMBIL DAN MENGURUTKAN VIDEO
 ================================== */
 
 function getVideos() {
-
   const query = search.value.toLowerCase().trim();
 
   let data = videos.filter(video =>
@@ -505,23 +699,21 @@ function getVideos() {
   );
 
   if (currentSort === "new") {
-    data.sort((a,b) => b.date - a.date);
+    data.sort((a, b) => b.date - a.date);
   }
 
   if (currentSort === "oldest") {
-    data.sort((a,b) => a.date - b.date);
+    data.sort((a, b) => a.date - b.date);
   }
 
   if (currentSort === "trending") {
-    data.sort((a,b) => {
+    data.sort((a, b) => {
       const aClicks = Number(
         localStorage.getItem("StreamVerse_" + a.id) || 0
       );
-
       const bClicks = Number(
         localStorage.getItem("StreamVerse_" + b.id) || 0
       );
-
       return bClicks - aClicks;
     });
   }
@@ -530,45 +722,81 @@ function getVideos() {
 }
 
 /* ==================================
-   OPEN VIDEO + SMARTLINK
+   5. POPUP SMARTLINK
+================================== */
+
+function scheduleAd() {
+  clearTimeout(adTimer);
+
+  if (adShownCount >= MAX_AD_SHOW) return;
+  if (!playerSection.classList.contains("show")) return;
+
+  adTimer = setTimeout(() => {
+    adShownCount++;
+    adOverlay.classList.add("show");
+  }, AD_DELAY);
+}
+
+function closeAd(openLink) {
+  adOverlay.classList.remove("show");
+
+  if (openLink) {
+    window.open(SMARTLINK_URL, "_blank");
+  }
+
+  scheduleAd();
+}
+
+// Tombol X: coba buka Smartlink lalu tutup popup
+adClose.addEventListener("click", () => {
+  closeAd(true);
+});
+
+// Tombol penawaran: tautan membuka Smartlink sendiri
+adButton.addEventListener("click", () => {
+  closeAd(false);
+});
+
+/* ==================================
+   6. MEMBUKA VIDEO
 ================================== */
 
 function openVideo(video) {
-
   const url = BASE_URL + video.id;
 
-  // Membuka Smartlink Adsterra di tab baru
+  // Smartlink dibuka saat kartu video diklik
   window.open(SMARTLINK_URL, "_blank");
 
-  // Memuat video yang dipilih
   playingTitle.textContent = video.title;
-
   videoFrame.src = url;
-
   directLink.href = url;
 
   playerSection.classList.add("show");
 
-  // Menghitung klik video
+  // Hitung klik video untuk Trending
   const key = "StreamVerse_" + video.id;
-
   const clicks = Number(localStorage.getItem(key) || 0);
 
   localStorage.setItem(key, clicks + 1);
 
-  // Scroll menuju pemutar
+  // Mulai kembali hitungan popup
+  adShownCount = 0;
+  scheduleAd();
+
   playerSection.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
+    behavior: "smooth",
+    block: "start"
   });
 }
 
 /* ==================================
-   CLOSE VIDEO
+   7. MENUTUP VIDEO
 ================================== */
 
 function closeVideo() {
+  clearTimeout(adTimer);
 
+  adOverlay.classList.remove("show");
   videoFrame.src = "about:blank";
 
   playerSection.classList.remove("show");
@@ -578,11 +806,10 @@ document.getElementById("closePlayer")
   .addEventListener("click", closeVideo);
 
 /* ==================================
-   RENDER VIDEOS
+   8. MENAMPILKAN DAFTAR VIDEO
 ================================== */
 
 function renderVideos() {
-
   const data = getVideos();
 
   const totalPages = Math.max(
@@ -593,11 +820,7 @@ function renderVideos() {
   currentPage = Math.min(currentPage, totalPages);
 
   const start = (currentPage - 1) * PER_PAGE;
-
-  const pageVideos = data.slice(
-    start,
-    start + PER_PAGE
-  );
+  const pageVideos = data.slice(start, start + PER_PAGE);
 
   grid.innerHTML = "";
 
@@ -607,90 +830,64 @@ function renderVideos() {
   }
 
   pageVideos.forEach(video => {
-
     const card = document.createElement("div");
     card.className = "card";
 
-    const thumb = document.createElement("div");
-    thumb.className = "thumb";
+    card.innerHTML = `
+      <div class="thumb">
+        <img
+          src="${video.image}"
+          alt="${video.title}"
+          loading="lazy"
+        >
+        <div class="play-icon">▶</div>
+      </div>
 
-    const img = document.createElement("img");
+      <div class="details">
+        <h3></h3>
+        <div class="meta">
+          <span>StreamVerse</span>
+          <span class="duration"></span>
+        </div>
+      </div>
+    `;
 
-    img.src = video.image || 
-      "https://placehold.co/640x360/26364a/ff8a22?text=" +
-      encodeURIComponent(video.title);
+    // Masukkan judul sebagai teks, bukan HTML
+    card.querySelector("h3").textContent = video.title;
 
-    img.alt = video.title;
-    img.loading = "lazy";
-
-    const playIcon = document.createElement("div");
-    playIcon.className = "play-icon";
-    playIcon.textContent = "▶";
-
-    thumb.append(img, playIcon);
-
-    const details = document.createElement("div");
-    details.className = "details";
-
-    const title = document.createElement("h3");
-    title.textContent = video.title;
-
-    const meta = document.createElement("div");
-    meta.className = "meta";
-
-    const number = document.createElement("span");
-    number.textContent = "StreamVerse";
-
-    const duration = document.createElement("span");
-    duration.className = "duration";
-    duration.textContent = "";
-
-    meta.append(number, duration);
-
-    details.append(title, meta);
-
-    card.append(thumb, details);
-
-    // Seluruh kartu dapat diklik
-    card.addEventListener("click", function() {
+    card.addEventListener("click", () => {
       openVideo(video);
     });
 
     grid.appendChild(card);
-
   });
 
   renderPagination(totalPages);
 }
 
 /* ==================================
-   PAGINATION
+   9. PAGINATION
 ================================== */
 
 function renderPagination(totalPages) {
-
   pagination.innerHTML = "";
 
   if (totalPages <= 1) return;
 
+  // Tombol halaman sebelumnya
   const prev = document.createElement("button");
-
   prev.textContent = "‹";
   prev.disabled = currentPage === 1;
 
-  prev.addEventListener("click", function() {
-
-    if (currentPage > 1) {
-      currentPage--;
-      renderVideos();
-    }
-
-  });
+  prev.onclick = () => {
+    currentPage--;
+    renderVideos();
+  };
 
   pagination.appendChild(prev);
 
+  // Nomor halaman
   for (let i = 1; i <= totalPages; i++) {
-
     const button = document.createElement("button");
 
     button.textContent = i;
@@ -699,74 +896,56 @@ function renderPagination(totalPages) {
       button.className = "active";
     }
 
-    button.addEventListener("click", function() {
-
+    button.onclick = () => {
       currentPage = i;
-
       renderVideos();
-
-      grid.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
-
-    });
+    };
 
     pagination.appendChild(button);
   }
 
+  // Tombol halaman berikutnya
   const next = document.createElement("button");
-
   next.textContent = "›";
   next.disabled = currentPage === totalPages;
 
-  next.addEventListener("click", function() {
-
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderVideos();
-    }
-
-  });
+  next.onclick = () => {
+    currentPage++;
+    renderVideos();
+  };
 
   pagination.appendChild(next);
 }
 
 /* ==================================
-   SORT BUTTONS
+   10. TAB NEW, TRENDING, OLDEST
 ================================== */
 
 document.querySelectorAll(".tabs button").forEach(button => {
-
   button.addEventListener("click", function() {
-
     currentSort = this.dataset.sort;
-
     currentPage = 1;
 
     document.querySelectorAll(".tabs button")
-      .forEach(btn => btn.classList.remove("active"));
+      .forEach(tab => tab.classList.remove("active"));
 
     this.classList.add("active");
 
     renderVideos();
   });
-
 });
 
 /* ==================================
-   SEARCH
+   11. PENCARIAN VIDEO
 ================================== */
 
-search.addEventListener("input", function() {
-
+search.addEventListener("input", () => {
   currentPage = 1;
-
   renderVideos();
 });
 
 /* ==================================
-   INITIALIZE
+   12. JALANKAN HALAMAN
 ================================== */
 
 renderVideos();
